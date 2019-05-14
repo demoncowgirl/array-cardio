@@ -19,7 +19,7 @@ gulp.task('copycss', function() {
 });
 
 gulp.task('copyjs', function() {
-	return gulp.src('app/*.js')
+	return gulp.src('app/js/*.js')
 		.pipe(gulp.dest('dist/'))
 });
 
@@ -40,5 +40,5 @@ gulp.task('watch', function() {
 });
 
 gulp.task('default', function(callback) {
-	runSequence(['sass', 'copyhtml', 'copycss'], callback)
+	runSequence(['sass', 'copyhtml', 'copycss', 'copyjs'], callback)
 });
