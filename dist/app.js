@@ -85,36 +85,47 @@ console.table(oldest);
 //6. Create a list of Boulevards in paris that contain 'de' anywhere in the name
 // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
 
-  const category = document.querySelectorAll(".mw-category[src='https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris']");
- //calls DOM element
- const groups = document.querySelectorAll(".mw-category-group[src='https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris']");
- const links = document.querySelectorAll("a[src='https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris']");
+  // const category = document.querySelector('.mw-category');
+  // const link = category.querySelectorAll('a'); //returns node list
 
- // var elems = document.querySelectorAll('.some-selector');
+  // change from nodelist to array
+  // const links = Array.from(category.querySelectorAll('a'));
 
-category.forEach(function (cat, index) {
-     console.log(index); // index
-     console.log(cat); // value
- });
+  //or use a spread
+  // const links = [...category.querySelectorAll('a')];
 
- groups.forEach(function (group, index) {
-     console.log(index); // index
-     console.log(group); // value
- });
-
- links.forEach(function (link, index) {
-     console.log(index); // index
-     console.log(link); // value
- });
-
-
-// console.log('Category: ' + category);
-// console.log('Group: ' + group);
-// console.log('Links: ' + links);
-
+  // const de = links
+  //   .map(link => link.textContent)
+  //   .filter(streetName => streetName.includes('de')));
 
 
 //7. Sort Exercise
 // Sort the people alphabetically by last name
 
+const alpha =people.sort((lastOne, nextOne) => {
+  // const parts = lastOne.split(', ');
+  // console.log(parts);
+  // const [last, first] = lastOne.split(' ');
+  // console.log(last, first);
+  // console.log(first + " " + last);
+
+  const [aLast, aFirst] = lastOne.split(', ');
+  const [bLast, bFirst] = nextOne.split(', ');
+    return aLast > bLast ? 1 : -1; //asc
+    // return aLast > bLast ? -1 : 1; //desc
+});
+console.log(alpha);
+
   const cars = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck', 'pogostick'];
+
+  const transportation =  cars.reduce(function(obj, item){
+
+    if(!obj[item]){
+      obj[item]=0;
+    }
+
+    obj[item]++;
+    return obj;
+    },{});
+    // {} is the blank object
+    console.log(transportation);
